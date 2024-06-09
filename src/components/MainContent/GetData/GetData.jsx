@@ -1,4 +1,5 @@
 import { Component } from "react";
+import axios from 'axios';
 
 import "./GetData.scss";
 
@@ -8,7 +9,8 @@ export default class GetData extends Component {
     super(props);
     this.state = {
       isChecked: false,
-      isListOpen: false
+      isListOpen: false,
+      quality: 'high',
     }
   }
 
@@ -21,6 +23,13 @@ export default class GetData extends Component {
   toggleListOpen = () => {
     this.setState(prevState => ({
       isListOpen: !prevState.isListOpen,
+    }));
+  };
+
+  setQuality = (chosenQuality) => {
+    this.setState(prevState => ({
+      isListOpen: !prevState.isListOpen,
+      quality: chosenQuality
     }));
   };
 
@@ -37,7 +46,7 @@ export default class GetData extends Component {
         </div>
         <div className="get-data__content">
           <h4 className="content__video-name">Название видео</h4>
-          <p class="content__video-author">Автор видео</p>
+          <p className="content__video-author">Автор видео</p>
           <section className="content__button-section">
             <h4 className="button-section__title--visually-hidden">
               Установка веб-ресурса
@@ -46,37 +55,39 @@ export default class GetData extends Component {
               Скачать
               <button className="install-button__open-list">
                 <img src="/images/list.svg" alt="Открытие выпадающего списка"
-                  className={isListOpen ? 'open-list__close-icon' : 'open-list__open-icon'} onClick={this.toggleListOpen} />
+                  className={isListOpen ? 'open-list__close-icon' : 'open-list__open-icon'} onClick={() => {
+                    this.toggleListOpen();
+                  }} />
               </button>
               {isListOpen && (
                 <div className="button-section__opened-list">
                   <ul className="opened-list__list">
                     <li className="list__item-list">
-                      <button className="item-list__content">
+                      <button className="item-list__content" onClick={() => this.setQuality('lowest')}>
                         <p className="content__about">144p</p>
                         <p className="content__quality">Наихудшее</p>
                       </button>
                     </li>
                     <li className="list__item-list">
-                      <button className="item-list__content">
+                      <button className="item-list__content" onClick={() => this.setQuality('low')}>
                         <p className="content__about">360p</p>
                         <p className="content__quality">Плохое</p>
                       </button>
                     </li>
                     <li className="list__item-list">
-                      <button className="item-list__content">
+                      <button className="item-list__content" onClick={() => this.setQuality('medium')}>
                         <p className="content__about">480p</p>
                         <p className="content__quality">Среднее</p>
                       </button>
                     </li>
                     <li className="list__item-list">
-                      <button className="item-list__content">
+                      <button className="item-list__content" onClick={() => this.setQuality('high')}>
                         <p className="content__about">720p</p>
                         <p className="content__quality">Хорошее</p>
                       </button>
                     </li>
                     <li className="list__item-list">
-                      <button className="item-list__content">
+                      <button className="item-list__content" onClick={() => this.setQuality('highest')}>
                         <p className="content__about">1080p</p>
                         <p className="content__quality">Отличное</p>
                       </button>
