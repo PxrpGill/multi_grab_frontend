@@ -24,7 +24,12 @@ export default class GetData extends Component {
             <h4 className="button-section__title--visually-hidden">
               Установка веб-ресурса
             </h4>
-            <button className="button-section__install-button">Скачать</button>
+            <button className="button-section__install-button">
+              Скачать
+              <button className="install-button__open-list">
+                <img src="/images/list.svg" alt="Открытие выпадающего списка" className="open-list__open-icon"/>
+              </button>
+            </button>
             <div className="button-section__add-func">
               <input className="button-section__checkbox" type="checkbox" name="check" id="check" />
               <label className="button-section__label" htmlFor="check">Только звук</label>

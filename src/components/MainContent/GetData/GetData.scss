@@ -70,6 +70,17 @@
     width: 146px;
     height: 32px;
     border: none;
+    cursor: pointer;
+}
+
+.install-button__open-list {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.open-list__open-icon {
+    rotate: 180deg;
 }
 
 .button-section__label {
