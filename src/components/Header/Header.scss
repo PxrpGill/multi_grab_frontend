@@ -1,0 +1,33 @@
+.header {
+    background-color: #222222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+}
+
+.header__container {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header__logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+    margin: 10px 0px 10px 0px;
+}
+
+.logo__image {
+    width: 68px;
+    height: 68px;
+}
+
+.logo__site-name {
+    color: white;
+    font-family: Montserrat-Bold;
+    font-size: 48px;
+}

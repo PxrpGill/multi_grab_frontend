@@ -1,0 +1,88 @@
+.get-data__title--visually-hidden {
+    display: none;
+}
+
+.button-section__title--visually-hidden {
+    display: none;
+}
+
+.content__get-data {
+    width: 637px;
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 40px;
+    background-color: #424242;
+    border-radius: 60px;
+    height: 262px;
+    gap: 30px;
+}
+
+.get-data__image {
+    width: 278px;
+    height: 202px;
+    background-color: #222222;
+    width: 100%;
+    border-radius: 29px;
+    overflow: hidden;
+}
+
+.get-data__image image {
+    width: 100%;
+    height: 100%;
+    border-radius: 29px;
+}
+
+.get-data__content {
+    width: 100%;
+    height: 202px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.content__video-name {
+    font-family: Montserrat-Medium;
+    font-size: 24px;
+    color: white;
+}
+
+.content__video-author {
+    font-family: Montserrat-Medium;
+    font-size: 20px;
+    color: white;
+}
+
+.content__button-section {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 8px;
+}
+
+.button-section__install-button {
+    background-color: #222222;
+    border-radius: 60px;
+    color: white;
+    font-family: Montserrat-Bold;
+    font-size: 14px;
+    width: 146px;
+    height: 32px;
+    border: none;
+}
+
+.button-section__label {
+    font-family: Montserrat-Regular;
+}
+
+.button-section__add-func {
+    display: flex;
+    align-items: center;
+}
+
+.button-section__checkbox {
+    width: 32px;
+    height: 32px;
+    border-radius: 60px;
+}
