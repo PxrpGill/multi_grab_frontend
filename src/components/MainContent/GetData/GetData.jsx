@@ -45,12 +45,49 @@ export default class GetData extends Component {
             <button className="button-section__install-button">
               Скачать
               <button className="install-button__open-list">
-                <img src="/images/list.svg" alt="Открытие выпадающего списка" className={isListOpen ?  'open-list__close-icon' : 'open-list__open-icon'} onClick={this.toggleListOpen}/>
+                <img src="/images/list.svg" alt="Открытие выпадающего списка"
+                  className={isListOpen ? 'open-list__close-icon' : 'open-list__open-icon'} onClick={this.toggleListOpen} />
               </button>
+              {isListOpen && (
+                <div className="button-section__opened-list">
+                  <ul className="opened-list__list">
+                    <li className="list__item-list">
+                      <button className="item-list__content">
+                        <p className="content__about">144p</p>
+                        <p className="content__quality">Наихудшее</p>
+                      </button>
+                    </li>
+                    <li className="list__item-list">
+                      <button className="item-list__content">
+                        <p className="content__about">360p</p>
+                        <p className="content__quality">Плохое</p>
+                      </button>
+                    </li>
+                    <li className="list__item-list">
+                      <button className="item-list__content">
+                        <p className="content__about">480p</p>
+                        <p className="content__quality">Среднее</p>
+                      </button>
+                    </li>
+                    <li className="list__item-list">
+                      <button className="item-list__content">
+                        <p className="content__about">720p</p>
+                        <p className="content__quality">Хорошее</p>
+                      </button>
+                    </li>
+                    <li className="list__item-list">
+                      <button className="item-list__content">
+                        <p className="content__about">1080p</p>
+                        <p className="content__quality">Отличное</p>
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              )}
             </button>
             <div className="button-section__add-func">
               <button className={`button-section__checkbox ${isChecked ? 'checked' : ''}`} onClick={this.toggleCheckbox}>
-                {isChecked && <img src="/images/checked.svg" className="checkbox__image"/>}
+                {isChecked && <img src="/images/checked.svg" className="checkbox__image" />}
               </button>
               <label className="button-section__label" htmlFor="check">Только звук</label>
             </div>

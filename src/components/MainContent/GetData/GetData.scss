@@ -113,3 +113,47 @@
     width: 16px;
     height: 12px;
 }
+
+.button-section__opened-list {
+    position: absolute;
+    margin-top: 8px;
+    width: 240px;
+    height: 168px;
+    background-color: #3C3C3C;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.opened-list__list {
+    width: 100%;
+}
+
+.list__item-list {
+    width: 100%;
+}
+
+.item-list__content {
+    width: 100%;
+    background: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 32px;
+    cursor: pointer;
+    border: none;
+}
+
+.content__about {
+    color: white;
+    font-family: Montserrat-Regular;
+    font-size: 14px;
+    margin-left: 16px;
+}
+
+.content__quality {
+    color: white;
+    font-family: Montserrat-Regular;
+    font-size: 14px;
+    margin-right: 16px;
+}
