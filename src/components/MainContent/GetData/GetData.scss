@@ -79,6 +79,10 @@
     cursor: pointer;
 }
 
+.open-list__close-icon {
+    rotate: 0deg;
+}
+
 .open-list__open-icon {
     rotate: 180deg;
 }
@@ -90,10 +94,22 @@
 .button-section__add-func {
     display: flex;
     align-items: center;
+    gap: 6px;
 }
 
 .button-section__checkbox {
     width: 32px;
     height: 32px;
     border-radius: 60px;
+    background-color: #222222;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.checkbox__image {
+    width: 16px;
+    height: 12px;
 }
