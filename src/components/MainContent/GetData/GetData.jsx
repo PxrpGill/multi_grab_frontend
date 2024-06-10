@@ -1,7 +1,9 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import axios from 'axios';
 
 import "./GetData.scss";
+
+import { videoOrAudio } from "../../../constants/urls";
 
 
 export default class GetData extends Component {
@@ -33,25 +35,65 @@ export default class GetData extends Component {
     }));
   };
 
-  render() {
-    const { isChecked, isListOpen } = this.state;
+  downloadVideoOrAudio = async (event, inputedLink, quality, isChecked) => {
+    event.preventDefault();
+    try {
+      const response = await axios.get(
+        videoOrAudio + inputedLink + "&quality=" + quality + "&only_audio=" + isChecked,
+        { responseType: 'blob' }
+      );
 
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+
+      const link = document.createElement('a');
+      link.href = url;
+
+      const contentDisposition = response.headers['content-disposition'];
+      let filename = 'downloaded_file';
+      if (contentDisposition && contentDisposition.indexOf('filename=') !== -1) {
+        filename = contentDisposition.split('filename=')[1].replace(/['"]/g, '');
+      } else {
+        const contentType = response.headers['content-type'];
+        if (contentType.includes('video')) {
+          filename += '.mp4';
+        } else if (contentType.includes('audio')) {
+          filename += '.mp3';
+        }
+      }
+
+      link.setAttribute('download', filename);
+
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error("Ошибка при получении данных:", error);
+    }
+  };
+
+  render() {
+    const { isChecked, isListOpen, quality } = this.state;
+    const { dataFromInputLink, inputedLink } = this.props;
     return (
       <article className="content__get-data">
         <h3 className="get-data__title--visually-hidden">
           Скачать веб-ресурс
         </h3>
         <div className="get-data__image">
-          <img src="#" alt="Изображение превью видео" />
+          <img src={dataFromInputLink.preview_url ? dataFromInputLink.preview_url : '#'} alt="Изображение превью видео" />
         </div>
         <div className="get-data__content">
-          <h4 className="content__video-name">Название видео</h4>
-          <p className="content__video-author">Автор видео</p>
+          {dataFromInputLink && (
+            <>
+              <h4 className="content__video-name">{dataFromInputLink.title}</h4>
+              <p className="content__video-author">{dataFromInputLink.author_name}</p>
+            </>
+          )}
           <section className="content__button-section">
             <h4 className="button-section__title--visually-hidden">
               Установка веб-ресурса
             </h4>
-            <button className="button-section__install-button">
+            <button className="button-section__install-button" onClick={(event) => this.downloadVideoOrAudio(event, inputedLink, quality, isChecked)}>
               Скачать
               <button className="install-button__open-list">
                 <img src="/images/list.svg" alt="Открытие выпадающего списка"
