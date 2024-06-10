@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="footer__container">
         <ul className="footer__list">
           <li className="list__item">
-            <a href="https://github.com/actusnileh/MultiGrab" className="item__link">
+            <a href="https://github.com/actusnileh/MultiGrab" className="item__link" >
               <img src="/images/github.svg" alt="" className="item__image" />
             </a>
           </li>
