@@ -105,11 +105,11 @@ export default class GetData extends Component {
               </button>
               <button className="install-button__open-list" onClick={() => { this.toggleListOpen(); }}>
                 <img src="/images/list.svg" alt="Открытие выпадающего списка"
-                  className={isListOpen ? 'open-list__close-icon' : 'open-list__open-icon'} />
+                  className={isListOpen ? 'open-list__rotate-open' : 'open-list__rotate-close'} />
               </button>
               {
                 isListOpen && (
-                  <div className="button-section__opened-list">
+                  <div className={`button-section__opened-list ${isListOpen ? 'open' : 'close'}`}>
                     <ul className="opened-list__list">
                       <li className="list__item-list">
                         <button className="item-list__content" onClick={() => this.setQuality('lowest')}>

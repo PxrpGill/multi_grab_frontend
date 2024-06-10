@@ -7,12 +7,11 @@
 }
 
 .content__get-data {
-    width: 637px;
     margin-top: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px 40px;
+    padding: 10px 25px;
     background-color: #424242;
     border-radius: 60px;
     height: 262px;
@@ -94,16 +93,39 @@
     border-radius: 0px 60px 60px 0px;
 }
 
-.open-list__close-icon {
-    rotate: 0deg;
+.open-list__rotate-open {
+    rotate: 180deg;
+    animation: rotate-open 0.2s linear forwards;
 }
 
-.open-list__open-icon {
+@keyframes rotate-open {
+    from {
+        transform: rotate(180deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+.open-list__rotate-close {
     rotate: 180deg;
+    animation: rotate-close 0.2s linear forwards;
+}
+
+@keyframes rotate-close {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(180deg);
+    }
 }
 
 .button-section__label {
     font-family: Montserrat-Regular;
+    color: white;
 }
 
 .button-section__add-func {
@@ -133,11 +155,44 @@
     position: absolute;
     margin-top: 205px;
     width: 240px;
-    height: 168px;
     background-color: #3C3C3C;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+}
+
+.button-section__opened-list.open {
+    height: 168px;
+    animation: slideDown 0.5s ease forwards;
+}
+
+@keyframes slideDown {
+    0% {
+        transform-origin: top;
+        transform: scaleY(0);
+    }
+
+    100% {
+        transform: scaleY(1);
+    }
+}
+
+.button-section__opened-list.close {
+    animation: slideUp 0.5s ease forwards;
+}
+
+@keyframes slideUp {
+    0% {
+        transform-origin: top;
+        transform: scaleY(1);
+    }
+
+    100% {
+        height: 0;
+        opacity: 0;
+        transform: scaleY(0);
+    }
 }
 
 .opened-list__list {

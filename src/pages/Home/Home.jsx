@@ -3,6 +3,7 @@ import { Component } from "react";
 import Header from "../../components/Header/Header"
 import MainContent from "../../components/MainContent/MainContent";
 import Footer from "../../components/Footer/Footer";
+import BackGround from "../../components/BackGround/BackGround";
 
 import "./Home.scss";
 
@@ -17,7 +18,9 @@ export default class Home extends Component {
         <Header />
         <main className="main">
           <div className="main__container">
-            <div className="main__background"></div>
+            <div className="main__background">
+              <BackGround />
+            </div>
             <MainContent />
           </div>
         </main>
