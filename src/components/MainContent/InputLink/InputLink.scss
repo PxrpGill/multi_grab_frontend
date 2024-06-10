@@ -28,8 +28,38 @@
     color: #737373;
 }
 
+.form__input-link:active {
+    background-color: #424242;
+    color: #737373;
+    font-family: Montserrat-Regular;
+    font-size: 20px;
+    outline: none;
+}
+
+.form__input-link:focus {
+    background-color: #424242;
+    color: #737373;
+    font-family: Montserrat-Regular;
+    font-size: 20px;
+    outline: none;
+}
+
+
 .form__input-link::placeholder {
     color: #E1E0E6;
+    background-color: #424242;
+    font-family: Montserrat-Regular;
+    font-size: 20px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0px 1000px #424242 inset !important;
+    -webkit-text-fill-color: #737373 !important;
+    font-family: Montserrat-Regular !important;
+    font-size: 20px !important;
 }
 
 .form__submit-form {

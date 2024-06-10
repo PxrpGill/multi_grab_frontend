@@ -2,6 +2,7 @@ import { Component } from "react";
 
 import Header from "../../components/Header/Header"
 import MainContent from "../../components/MainContent/MainContent";
+import Footer from "../../components/Footer/Footer";
 
 import "./Home.scss";
 
@@ -20,6 +21,7 @@ export default class Home extends Component {
             <MainContent />
           </div>
         </main>
+        <Footer />
       </>
     )
   }

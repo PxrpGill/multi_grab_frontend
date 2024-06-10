@@ -20,7 +20,7 @@
 }
 
 .get-data__image {
-    width: 278px;
+    width: 100%;
     height: 202px;
     background-color: #222222;
     width: 100%;
@@ -28,9 +28,11 @@
     overflow: hidden;
 }
 
-.get-data__image image {
-    width: 278px;
-    height: 202px;
+.get-data__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
     border-radius: 29px;
 }
 
