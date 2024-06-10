@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import "./GetData.scss";
 
-import { videoOrAudio } from "../../../constants/urls";
+import { videoOrAudio, limit } from "../../../constants/urls";
 
 
 export default class GetData extends Component {
@@ -74,6 +74,12 @@ export default class GetData extends Component {
   render() {
     const { isChecked, isListOpen, quality } = this.state;
     const { dataFromInputLink, inputedLink } = this.props;
+
+    const limitWords = (text, wordLimit) => {
+      const words = text.split(" ");
+      return words.length > wordLimit ? words.slice(0, wordLimit).join(" ") + "..." : text;
+    };
+
     return (
       <article className="content__get-data">
         <h3 className="get-data__title--visually-hidden">
@@ -85,59 +91,61 @@ export default class GetData extends Component {
         <div className="get-data__content">
           {dataFromInputLink && (
             <>
-              <h4 className="content__video-name">{dataFromInputLink.title}</h4>
-              <p className="content__video-author">{dataFromInputLink.author_name}</p>
+              <h4 className="content__video-name">{limitWords(dataFromInputLink.title, limit)}</h4>
+              <p className="content__video-author">{limitWords(dataFromInputLink.author_name, limit)}</p>
             </>
           )}
           <section className="content__button-section">
             <h4 className="button-section__title--visually-hidden">
               Установка веб-ресурса
             </h4>
-            <button className="button-section__install-button" onClick={(event) => this.downloadVideoOrAudio(event, inputedLink, quality, isChecked)}>
-              Скачать
-              <button className="install-button__open-list">
-                <img src="/images/list.svg" alt="Открытие выпадающего списка"
-                  className={isListOpen ? 'open-list__close-icon' : 'open-list__open-icon'} onClick={() => {
-                    this.toggleListOpen();
-                  }} />
+            <div className="content__install-buttons">
+              <button className="button-section__install-button" onClick={(event) => this.downloadVideoOrAudio(event, inputedLink, quality, isChecked)}>
+                Скачать
               </button>
-              {isListOpen && (
-                <div className="button-section__opened-list">
-                  <ul className="opened-list__list">
-                    <li className="list__item-list">
-                      <button className="item-list__content" onClick={() => this.setQuality('lowest')}>
-                        <p className="content__about">144p</p>
-                        <p className="content__quality">Наихудшее</p>
-                      </button>
-                    </li>
-                    <li className="list__item-list">
-                      <button className="item-list__content" onClick={() => this.setQuality('low')}>
-                        <p className="content__about">360p</p>
-                        <p className="content__quality">Плохое</p>
-                      </button>
-                    </li>
-                    <li className="list__item-list">
-                      <button className="item-list__content" onClick={() => this.setQuality('medium')}>
-                        <p className="content__about">480p</p>
-                        <p className="content__quality">Среднее</p>
-                      </button>
-                    </li>
-                    <li className="list__item-list">
-                      <button className="item-list__content" onClick={() => this.setQuality('high')}>
-                        <p className="content__about">720p</p>
-                        <p className="content__quality">Хорошее</p>
-                      </button>
-                    </li>
-                    <li className="list__item-list">
-                      <button className="item-list__content" onClick={() => this.setQuality('highest')}>
-                        <p className="content__about">1080p</p>
-                        <p className="content__quality">Отличное</p>
-                      </button>
-                    </li>
-                  </ul>
-                </div>
-              )}
-            </button>
+              <button className="install-button__open-list" onClick={() => { this.toggleListOpen(); }}>
+                <img src="/images/list.svg" alt="Открытие выпадающего списка"
+                  className={isListOpen ? 'open-list__close-icon' : 'open-list__open-icon'} />
+              </button>
+              {
+                isListOpen && (
+                  <div className="button-section__opened-list">
+                    <ul className="opened-list__list">
+                      <li className="list__item-list">
+                        <button className="item-list__content" onClick={() => this.setQuality('lowest')}>
+                          <p className="content__about">144p</p>
+                          <p className="content__quality">Наихудшее</p>
+                        </button>
+                      </li>
+                      <li className="list__item-list">
+                        <button className="item-list__content" onClick={() => this.setQuality('low')}>
+                          <p className="content__about">360p</p>
+                          <p className="content__quality">Плохое</p>
+                        </button>
+                      </li>
+                      <li className="list__item-list">
+                        <button className="item-list__content" onClick={() => this.setQuality('medium')}>
+                          <p className="content__about">480p</p>
+                          <p className="content__quality">Среднее</p>
+                        </button>
+                      </li>
+                      <li className="list__item-list">
+                        <button className="item-list__content" onClick={() => this.setQuality('high')}>
+                          <p className="content__about">720p</p>
+                          <p className="content__quality">Хорошее</p>
+                        </button>
+                      </li>
+                      <li className="list__item-list">
+                        <button className="item-list__content" onClick={() => this.setQuality('highest')}>
+                          <p className="content__about">1080p</p>
+                          <p className="content__quality">Отличное</p>
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+                )
+              }
+            </div>
             <div className="button-section__add-func">
               <button className={`button-section__checkbox ${isChecked ? 'checked' : ''}`} onClick={this.toggleCheckbox}>
                 {isChecked && <img src="/images/checked.svg" className="checkbox__image" />}
