@@ -2,7 +2,7 @@ export default function BackGround() {
 	return (
 		<svg viewBox="-50 20 504 180" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path fill="#FD8232" transform="translate(120 100)">
-				<animate attributeName="d" dur="15s" repeatCount="indefinite"
+				<animate attributeName="d" dur="10s" repeatCount="indefinite"
 					values="M47.4,-53.1C56.3,-38.6,54.7,-19.3,54.3,
                     -0.5C53.8,18.4,54.5,36.7,45.6,46C36.7,55.3,18.4,
                     55.6,1.2,54.3C-16,53.1,-31.9,50.5,-46.9,41.2C-61.8,
