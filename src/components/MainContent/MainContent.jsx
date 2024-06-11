@@ -28,7 +28,7 @@ export default class MainContent extends Component {
         <h2 className="content__title--visually-hidden">
           Секция контента
         </h2>
-        <InputLink onData={this.handleDataFromInputLink} />
+        <InputLink onData={this.handleDataFromInputLink}/>
         {dataFromInputLink ? <GetData dataFromInputLink={dataFromInputLink} inputedLink={inputedLink}/> : <></>}
       </section>
     )
